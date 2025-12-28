@@ -36,6 +36,7 @@
     "server_id": "112",
     "emoji": "💚",
     "timestamp": "2025-12-28T07:53:06.246Z",
-    "processed": false
+    "processed": true,
+    "processed_at": "2025-12-28T07:53:06.986Z"
   }
 }
