@@ -46,6 +46,7 @@
       "🩷"
     ],
     "timestamp": "2025-12-28T11:33:08.048Z",
-    "processed": false
+    "processed": true,
+    "processed_at": "2025-12-28T11:33:08.420Z"
   }
 }
