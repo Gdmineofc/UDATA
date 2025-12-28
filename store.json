@@ -113,5 +113,12 @@
     "emoji": "💚",
     "timestamp": "2025-12-28T08:09:33.257Z",
     "processed": false
+  },
+  "120363424141769129@newsletter_123": {
+    "from": "120363424141769129@newsletter",
+    "server_id": "123",
+    "emoji": "💙",
+    "timestamp": "2025-12-28T08:09:34.738Z",
+    "processed": false
   }
 }
