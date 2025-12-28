@@ -246,5 +246,12 @@
     "timestamp": "2025-12-28T08:49:19.398Z",
     "processed": true,
     "processed_at": "2025-12-28T08:49:20.173Z"
+  },
+  "120363424141769129@newsletter_144": {
+    "from": "120363424141769129@newsletter",
+    "server_id": "144",
+    "emoji": {},
+    "timestamp": "2025-12-28T08:53:57.475Z",
+    "processed": false
   }
 }
