@@ -4,6 +4,7 @@
     "server_id": "147",
     "emojis": {},
     "timestamp": "2025-12-28T10:07:26.667Z",
-    "processed": false
+    "processed": true,
+    "processed_at": "2025-12-28T10:07:27.452Z"
   }
 }
