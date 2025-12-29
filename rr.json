@@ -1,0 +1,1342 @@
+2025-12-29T08:23:53.429122+00:00 app[web.1]: [PM2] Spawning PM2 daemon with pm2_home=/app/.pm2
+2025-12-29T08:23:53.569470+00:00 app[web.1]: [PM2] PM2 Successfully daemonized
+2025-12-29T08:23:53.585247+00:00 app[web.1]: [PM2] Starting /app/index.js in fork_mode (1 instance)
+2025-12-29T08:23:53.595806+00:00 app[web.1]: [PM2] Done.
+2025-12-29T08:23:53.611562+00:00 app[web.1]: ┌────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+2025-12-29T08:23:53.611565+00:00 app[web.1]: │ id │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+2025-12-29T08:23:53.611565+00:00 app[web.1]: ├────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+2025-12-29T08:23:53.611566+00:00 app[web.1]: │ 0  │ manulite    │ default     │ 1.0.0   │ fork    │ 43       │ 0s     │ 0    │ online    │ 0%       │ 30.3mb   │ u15107   │ disabled │
+2025-12-29T08:23:53.611575+00:00 app[web.1]: └────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+2025-12-29T08:23:53.611657+00:00 app[web.1]: [PM2][INFO] Log streaming apps id: 0, exit with Ctrl-C or will exit in 10secs
+2025-12-29T08:23:53.969662+00:00 app[web.1]: 
+2025-12-29T08:23:53.969681+00:00 app[web.1]: > manu-md-lite@1.0.0 start
+2025-12-29T08:23:53.969682+00:00 app[web.1]: > pm2 start index.js --deep-monitoring --attach --name manulite
+2025-12-29T08:23:53.969682+00:00 app[web.1]: 
+2025-12-29T08:23:54.146216+00:00 app[web.1]: 
+2025-12-29T08:23:54.146218+00:00 app[web.1]:                         -------------
+2025-12-29T08:23:54.146218+00:00 app[web.1]: 
+2025-12-29T08:23:54.146219+00:00 app[web.1]: __/\\\\\\\\\\\\\____/\\\\____________/\\\\____/\\\\\\\\\_____
+2025-12-29T08:23:54.146219+00:00 app[web.1]:  _\/\\\/////////\\\_\/\\\\\\________/\\\\\\__/\\\///////\\\___
+2025-12-29T08:23:54.146219+00:00 app[web.1]:   _\/\\\_______\/\\\_\/\\\//\\\____/\\\//\\\_\///______\//\\\__
+2025-12-29T08:23:54.146220+00:00 app[web.1]:    _\/\\\\\\\\\\\\\/__\/\\\\///\\\/\\\/_\/\\\___________/\\\/___
+2025-12-29T08:23:54.146220+00:00 app[web.1]:     _\/\\\/////////____\/\\\__\///\\\/___\/\\\________/\\\//_____
+2025-12-29T08:23:54.146220+00:00 app[web.1]:      _\/\\\_____________\/\\\____\///_____\/\\\_____/\\\//________
+2025-12-29T08:23:54.146220+00:00 app[web.1]:       _\/\\\_____________\/\\\_____________\/\\\___/\\\/___________
+2025-12-29T08:23:54.146221+00:00 app[web.1]:        _\/\\\_____________\/\\\_____________\/\\\__/\\\\\\\\\\\\\\\_
+2025-12-29T08:23:54.146221+00:00 app[web.1]:         _\///______________\///______________\///__\///////////////__
+2025-12-29T08:23:54.146221+00:00 app[web.1]: 
+2025-12-29T08:23:54.146221+00:00 app[web.1]: 
+2025-12-29T08:23:54.146222+00:00 app[web.1]:                           Runtime Edition
+2025-12-29T08:23:54.146222+00:00 app[web.1]: 
+2025-12-29T08:23:54.146222+00:00 app[web.1]:         PM2 is a Production Process Manager for Node.js applications
+2025-12-29T08:23:54.146222+00:00 app[web.1]:                      with a built-in Load Balancer.
+2025-12-29T08:23:54.146222+00:00 app[web.1]: 
+2025-12-29T08:23:54.146223+00:00 app[web.1]:                 Start and Daemonize any application:
+2025-12-29T08:23:54.146223+00:00 app[web.1]:                 $ pm2 start app.js
+2025-12-29T08:23:54.146223+00:00 app[web.1]: 
+2025-12-29T08:23:54.146223+00:00 app[web.1]:                 Load Balance 4 instances of api.js:
+2025-12-29T08:23:54.146224+00:00 app[web.1]:                 $ pm2 start api.js -i 4
+2025-12-29T08:23:54.146224+00:00 app[web.1]: 
+2025-12-29T08:23:54.146224+00:00 app[web.1]:                 Monitor in production:
+2025-12-29T08:23:54.146237+00:00 app[web.1]:                 $ pm2 monitor
+2025-12-29T08:23:54.146237+00:00 app[web.1]: 
+2025-12-29T08:23:54.146237+00:00 app[web.1]:                 Make pm2 auto-boot at server restart:
+2025-12-29T08:23:54.146238+00:00 app[web.1]:                 $ pm2 startup
+2025-12-29T08:23:54.146238+00:00 app[web.1]: 
+2025-12-29T08:23:54.146238+00:00 app[web.1]:                 To go further checkout:
+2025-12-29T08:23:54.146238+00:00 app[web.1]:                 http://pm2.io/
+2025-12-29T08:23:54.146238+00:00 app[web.1]: 
+2025-12-29T08:23:54.146238+00:00 app[web.1]: 
+2025-12-29T08:23:54.146238+00:00 app[web.1]:                         -------------
+2025-12-29T08:23:54.146239+00:00 app[web.1]: 
+2025-12-29T08:23:54.253103+00:00 app[web.1]: [PM2] Spawning PM2 daemon with pm2_home=/app/.pm2
+2025-12-29T08:23:54.388786+00:00 app[web.1]: [PM2] PM2 Successfully daemonized
+2025-12-29T08:23:54.400719+00:00 app[web.1]: [PM2] Starting /app/index.js in fork_mode (1 instance)
+2025-12-29T08:23:54.411858+00:00 app[web.1]: [PM2] Done.
+2025-12-29T08:23:54.427125+00:00 app[web.1]: ┌────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+2025-12-29T08:23:54.427137+00:00 app[web.1]: │ id │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+2025-12-29T08:23:54.427137+00:00 app[web.1]: ├────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+2025-12-29T08:23:54.427137+00:00 app[web.1]: │ 0  │ manulite    │ default     │ 1.0.0   │ fork    │ 43       │ 0s     │ 0    │ online    │ 0%       │ 31.5mb   │ u15066   │ disabled │
+2025-12-29T08:23:54.427138+00:00 app[web.1]: └────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+2025-12-29T08:23:54.427217+00:00 app[web.1]: [PM2][INFO] Log streaming apps id: 0, exit with Ctrl-C or will exit in 10secs
+2025-12-29T08:23:54.511165+00:00 app[web.1]: 0|manulite  | ♡ Thanks for use @kagenoureal/zbail
+2025-12-29T08:23:54.511188+00:00 app[web.1]: 0|manulite  | ⧎ Version: 10.3.3
+2025-12-29T08:23:54.511209+00:00 app[web.1]: 0|manulite  | ⧎ Dev: Kageno pemalas
+2025-12-29T08:23:54.511225+00:00 app[web.1]: 0|manulite  | ⧎ Based: @whiskeysockets/baileys
+2025-12-29T08:23:55.280354+00:00 app[web.1]: 0|manulite  | 🚀 Starting Manu-MD Lite Bot...
+2025-12-29T08:23:55.281983+00:00 app[web.1]: 0|manulite  | 🌐 Web server running at http://localhost:56452
+2025-12-29T08:23:56.313791+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2025-12-29T08:23:56.373369+00:00 heroku[web.1]: State changed from starting to up
+2025-12-29T08:23:56.126897+00:00 app[web.1]: 0|manulite  | 🚀 Starting Manu-MD Lite Bot...
+2025-12-29T08:23:56.126919+00:00 app[web.1]: 0|manulite  | 🌐 Web server running at http://localhost:48529
+2025-12-29T08:23:56.429422+00:00 heroku[web.1]: Process exited with status 143
+2025-12-29T08:23:58.127422+00:00 app[web.1]: 0|manulite  | 🗑️ Removed existing /session directory
+2025-12-29T08:23:58.127650+00:00 app[web.1]: 0|manulite  | ✅ Created new /session directory
+2025-12-29T08:24:00.721708+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:24:01.197183+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:24:01.245909+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:24:01.781768+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:24:01.852753+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:24:01.873409+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:24:01.992758+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:24:02.606142+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:24:03.356972+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:24:03.562432+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:24:03.637615+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:24:03.742442+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:24:04.078353+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:24:04.168442+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:24:04.217391+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:24:04.512950+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:24:04.652469+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:24:05.119458+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:24:05.136795+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:24:05.364523+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:24:05.439115+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:24:05.505445+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:23:27.085868+00:00 app[api]: Log session created by user manulmihisarax@gmail.com
+2025-12-29T08:24:06.189984+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:24:06.248100+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:24:06.341306+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:24:06.412214+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:24:06.474892+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:24:06.656311+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:24:07.314611+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:24:07.399896+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:24:08.113836+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:24:08.127960+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:24:08.232205+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:24:08.479158+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:24:08.483411+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:24:08.719145+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:24:08.746102+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:24:08.920209+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:24:09.199365+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:24:09.241364+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:24:09.295567+00:00 app[web.1]: 0|manulite  | ✅ Bot started with 44 sessions
+2025-12-29T08:24:09.310479+00:00 app[web.1]: 0|manulite  | ⏰ Next auto-restart scheduled at: 9:54:09 AM
+2025-12-29T08:24:09.310687+00:00 app[web.1]: 0|manulite  |    (in 90 minutes)
+2025-12-29T08:24:10.209029+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:24:10.317852+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:23:42.559039+00:00 app[api]: Scaled to web@1:Standard-1X by user manulmihisarax@gmail.com
+2025-12-29T08:23:43.854842+00:00 app[api]: Scaled to web@1:Standard-2X by user manulmihisarax@gmail.com
+2025-12-29T08:23:53.205478+00:00 app[api]: Log session created by user manulmihisarax@gmail.com
+2025-12-29T08:25:15.090608+00:00 app[web.1]: 0|manulite  | [94703037422] ✅ Allowed call from 36439274315777
+2025-12-29T08:25:54.399702+00:00 app[api]: Log session created by user manulmihisarax@gmail.com
+2025-12-29T08:26:02.919751+00:00 app[web.1]: 0|manulite  | [Error: ENOENT: no such file or directory, open ''] {
+2025-12-29T08:26:02.919770+00:00 app[web.1]: 0|manulite  |   errno: -2,
+2025-12-29T08:26:02.919770+00:00 app[web.1]: 0|manulite  |   code: 'ENOENT',
+2025-12-29T08:26:02.919773+00:00 app[web.1]: 0|manulite  |   syscall: 'open',
+2025-12-29T08:26:02.919885+00:00 app[web.1]: 0|manulite  |   path: ''
+2025-12-29T08:26:02.919889+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:02.923168+00:00 app[web.1]: 0|manulite  | ❌ Uncaught Exception: [Error: ENOENT: no such file or directory, open ''] {
+2025-12-29T08:26:02.923190+00:00 app[web.1]: 0|manulite  |   errno: -2,
+2025-12-29T08:26:02.923203+00:00 app[web.1]: 0|manulite  |   code: 'ENOENT',
+2025-12-29T08:26:02.923218+00:00 app[web.1]: 0|manulite  |   syscall: 'open',
+2025-12-29T08:26:02.923237+00:00 app[web.1]: 0|manulite  |   path: ''
+2025-12-29T08:26:02.923249+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:02.923270+00:00 app[web.1]: 0|manulite  | Stack trace: Error: ENOENT: no such file or directory, open ''
+2025-12-29T08:26:02.923589+00:00 app[web.1]: 0|manulite  | 🧹 All sessions cleaned up
+2025-12-29T08:26:02.924428+00:00 app[web.1]: 0|manulite  | [Error: ENOENT: no such file or directory, open ''] {
+2025-12-29T08:26:02.924443+00:00 app[web.1]: 0|manulite  |   errno: -2,
+2025-12-29T08:26:02.924456+00:00 app[web.1]: 0|manulite  |   code: 'ENOENT',
+2025-12-29T08:26:02.924470+00:00 app[web.1]: 0|manulite  |   syscall: 'open',
+2025-12-29T08:26:02.924483+00:00 app[web.1]: 0|manulite  |   path: ''
+2025-12-29T08:26:02.924505+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:02.925901+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:02.925903+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:02.925928+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:02.925948+00:00 app[web.1]: 0|manulite  |     at query (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:144:13)
+2025-12-29T08:26:02.925970+00:00 app[web.1]: 0|manulite  |     at Object.executeUSyncQuery (/app/node_modules/@whiskeysockets/baileys/lib/Socket/usync.js:62:30)
+2025-12-29T08:26:02.926002+00:00 app[web.1]: 0|manulite  |     at getUSyncDevices (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:147:35)
+2025-12-29T08:26:02.926006+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:412:57
+2025-12-29T08:26:02.926021+00:00 app[web.1]: 0|manulite  |     at Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:32)
+2025-12-29T08:26:02.926032+00:00 app[web.1]: 0|manulite  |     at relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:30)
+2025-12-29T08:26:02.926043+00:00 app[web.1]: 0|manulite  |     at Object.sendMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:860:23) {
+2025-12-29T08:26:02.926054+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:02.926065+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:02.926084+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:02.926086+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:02.926096+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:02.926108+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:02.926108+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:02.926121+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:02.926121+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:02.926140+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:02.926140+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:02.926166+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:02.926178+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:02.926601+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:02.926610+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:02.926619+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:02.926628+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:02.926637+00:00 app[web.1]: 0|manulite  |       at query (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:144:13)
+2025-12-29T08:26:02.926645+00:00 app[web.1]: 0|manulite  |       at Object.executeUSyncQuery (/app/node_modules/@whiskeysockets/baileys/lib/Socket/usync.js:62:30)
+2025-12-29T08:26:02.926654+00:00 app[web.1]: 0|manulite  |       at getUSyncDevices (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:147:35)
+2025-12-29T08:26:02.926674+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:412:57
+2025-12-29T08:26:02.926685+00:00 app[web.1]: 0|manulite  |       at Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:32)
+2025-12-29T08:26:02.926699+00:00 app[web.1]: 0|manulite  |       at relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:30)
+2025-12-29T08:26:02.926719+00:00 app[web.1]: 0|manulite  |       at Object.sendMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:860:23) {
+2025-12-29T08:26:02.926729+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:02.926738+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:02.926747+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:02.926756+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:02.926765+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:02.926773+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:02.926782+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:02.926791+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:02.926802+00:00 app[web.1]: 0|manulite  |     at query (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:144:13)
+2025-12-29T08:26:02.926822+00:00 app[web.1]: 0|manulite  |     at Object.executeUSyncQuery (/app/node_modules/@whiskeysockets/baileys/lib/Socket/usync.js:62:30)
+2025-12-29T08:26:02.926832+00:00 app[web.1]: 0|manulite  |     at getUSyncDevices (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:147:35)
+2025-12-29T08:26:02.926841+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:412:57
+2025-12-29T08:26:02.926850+00:00 app[web.1]: 0|manulite  |     at Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:32)
+2025-12-29T08:26:02.926859+00:00 app[web.1]: 0|manulite  |     at relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:30)
+2025-12-29T08:26:02.926868+00:00 app[web.1]: 0|manulite  |     at Object.sendMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:860:23) {
+2025-12-29T08:26:02.926876+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:02.926885+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:02.926898+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:02.926909+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:02.926922+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:02.926932+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:02.926940+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:02.926949+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:02.926958+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:02.926967+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:02.926975+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:02.926984+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:02.926993+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.004281+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:06.004295+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.004297+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.004297+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.004304+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.004319+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.004345+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.004346+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.004360+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.004373+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.004387+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.004400+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.004413+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.004427+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.004451+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.004451+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.004465+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.004480+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.004495+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.004525+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.004526+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.004537+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.004556+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.004749+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:06.004765+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:06.004797+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.004815+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.004834+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.004853+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.004909+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.004913+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.004923+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.004936+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.004950+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.004962+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:06.004974+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:06.004987+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:06.004999+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:06.005012+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.005032+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:06.005033+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.005045+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.005075+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.005085+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.005094+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.005104+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.005112+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.005121+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.005130+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.005139+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.005148+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.005156+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.005165+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.005173+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.005182+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.005191+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.005199+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.005208+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.005217+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.005226+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.005234+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.005243+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.019505+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:06.019507+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.019520+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.019539+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.019558+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.019573+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.019593+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.019611+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.019630+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.019641+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.019654+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.019668+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.019690+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.019708+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.019729+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.019765+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.019778+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.019792+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.019806+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.019820+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.019833+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.019884+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.019904+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.020077+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:06.020089+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:06.020132+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.020151+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.020171+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.020189+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.020208+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.020229+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.020244+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.020262+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.020281+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.020315+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:06.020329+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:06.020342+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:06.020355+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:06.020367+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.020380+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:06.020393+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.020406+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.020419+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.020432+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.020445+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.020458+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.020479+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.020492+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.020504+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.020517+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.020572+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.020647+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.020664+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.020673+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.020692+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.020726+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.020739+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.020749+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.020769+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.020778+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.020791+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.020831+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.212554+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:06.212556+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.212557+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.212558+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.212574+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.212576+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.212586+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.212596+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.212606+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.212617+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.212627+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.212637+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.212649+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.212660+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.212671+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.212680+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.212701+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.212703+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.212706+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.212711+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.212719+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.212723+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.212731+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:06.212956+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:06.212965+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:06.212967+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.212972+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.212978+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.212982+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.212991+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.213000+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.213001+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.213012+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.213013+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.213023+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:06.213024+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:06.213032+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:06.213041+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:06.213043+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.213054+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:06.213054+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:06.213058+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:06.213066+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:06.213075+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:06.213076+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:06.213084+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:06.213094+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:06.213095+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:06.213102+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:06.213111+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:06.213129+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:06.213130+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:06.213139+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:06.213147+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:06.213156+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:06.213166+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:06.213182+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:06.213182+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:06.213183+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:06.213192+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:06.213202+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:06.213227+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:07.924226+00:00 app[web.1]: 0|manulite  | 🚀 Starting Manu-MD Lite Bot...
+2025-12-29T08:26:08.352354+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:26:08.405527+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:26:08.420672+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:26:08.433934+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:26:08.439827+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:26:08.442694+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:26:08.471287+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:26:08.477652+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:26:08.483378+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:26:08.484963+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:26:08.549018+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:26:08.571739+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:26:08.622186+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:26:08.635492+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:26:08.644857+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:26:08.646423+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:26:08.686224+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:26:08.703883+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:26:08.704859+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:26:08.776008+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:26:08.793990+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:26:08.820762+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:26:08.844558+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:26:08.856866+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:26:08.877797+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:26:08.916968+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:26:08.952242+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:26:08.970743+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:26:08.999811+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:26:09.001211+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:26:09.017954+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:26:09.044165+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:26:09.047147+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:26:09.068904+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:26:09.126262+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:26:09.232316+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:26:09.235205+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:26:09.237442+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:26:09.301732+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:26:09.337144+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:26:09.386494+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:26:09.787856+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:26:09.935341+00:00 app[web.1]: 0|manulite  | 🗑️ Removed existing /session directory
+2025-12-29T08:26:09.935527+00:00 app[web.1]: 0|manulite  | ✅ Created new /session directory
+2025-12-29T08:26:10.315094+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:26:10.339207+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:26:10.366778+00:00 app[web.1]: 0|manulite  | [94729701030] Welcome message error: undefined
+2025-12-29T08:26:10.366846+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.376510+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:26:10.379602+00:00 app[web.1]: 0|manulite  | [26371750717] Welcome message error: undefined
+2025-12-29T08:26:10.379603+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.381570+00:00 app[web.1]: 0|manulite  | [94756569120] Welcome message error: Connection Closed
+2025-12-29T08:26:10.381829+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.384804+00:00 app[web.1]: 0|manulite  | [94762907513] Welcome message error: undefined
+2025-12-29T08:26:10.384960+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.388377+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:26:10.406799+00:00 app[web.1]: 0|manulite  | [50947146649] Welcome message error: undefined
+2025-12-29T08:26:10.407021+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.423215+00:00 app[web.1]: 0|manulite  | Newsletter follow error: undefined
+2025-12-29T08:26:10.446100+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:26:10.465302+00:00 app[web.1]: 0|manulite  | ✅ Bot started with 44 sessions
+2025-12-29T08:26:10.465997+00:00 app[web.1]: 0|manulite  | ⏰ Next auto-restart scheduled at: 9:56:10 AM
+2025-12-29T08:26:10.465998+00:00 app[web.1]: 0|manulite  |    (in 90 minutes)
+2025-12-29T08:26:10.476564+00:00 app[web.1]: 0|manulite  | [94766842182] Welcome message error: undefined
+2025-12-29T08:26:10.477257+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.487415+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:26:10.489054+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:26:10.495349+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:26:10.503523+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:26:10.504895+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:26:10.523366+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:26:10.525181+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:26:10.528270+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:26:10.542108+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:26:10.544228+00:00 app[web.1]: 0|manulite  | [25579355546] Welcome message error: undefined
+2025-12-29T08:26:10.544341+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.564074+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:26:10.565675+00:00 app[web.1]: 0|manulite  | [23491142875] Welcome message error: Connection Closed
+2025-12-29T08:26:10.565807+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.599372+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:26:10.601133+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:26:10.621361+00:00 app[web.1]: 0|manulite  | [23470769106] Welcome message error: undefined
+2025-12-29T08:26:10.621480+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.642413+00:00 app[web.1]: 0|manulite  | [94783790681] Welcome message error: undefined
+2025-12-29T08:26:10.642591+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.649598+00:00 app[web.1]: 0|manulite  | [94750862852] Welcome message error: undefined
+2025-12-29T08:26:10.649707+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.653763+00:00 app[web.1]: 0|manulite  | Newsletter follow error: undefined
+2025-12-29T08:26:10.660248+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:26:10.679745+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:26:10.687918+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:26:10.699036+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:26:10.701029+00:00 app[web.1]: 0|manulite  | [23481847842] Welcome message error: Connection Closed
+2025-12-29T08:26:10.701114+00:00 app[web.1]: 0|manulite  | Newsletter follow error: Connection Closed
+2025-12-29T08:26:10.709040+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:26:10.719968+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:26:10.745573+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:26:10.758952+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:26:10.769676+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:26:10.827631+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:26:10.880982+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:26:10.935770+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:26:10.973009+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:26:11.022927+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:26:11.034407+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:26:11.089371+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:26:11.325673+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:26:11.327802+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:26:11.350370+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:26:11.410955+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:26:11.486954+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:26:11.515359+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:26:11.666483+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:26:11.694374+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:26:11.735991+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:26:13.468104+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:13.468121+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:13.468121+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:13.468122+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:13.468133+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:13.468133+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:13.468136+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:13.468137+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:13.468138+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:13.468160+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:13.468162+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:13.468173+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:13.468184+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:13.468194+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:13.468204+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:13.468217+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:13.468217+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:13.469228+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:13.469228+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:13.469229+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:13.469229+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:13.469229+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:13.469229+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:13.469230+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:13.469230+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:13.469230+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:13.469230+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:13.469231+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:13.469231+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:13.469231+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:13.469232+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:13.469232+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:13.469232+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:13.469232+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:13.469232+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:13.469233+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:13.469233+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:13.469233+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:13.469233+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:13.469234+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:13.469235+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:13.469235+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:13.469235+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:13.469235+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:13.469235+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:13.469236+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:13.469237+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:13.469238+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:13.469242+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:13.469242+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:13.469242+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:13.469242+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:13.469243+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:13.469244+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:13.469245+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:13.469245+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:13.469245+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:13.469245+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:13.469246+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:13.469246+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:13.469246+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:13.469246+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:13.469247+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:13.469247+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:13.469247+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:15.605070+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:26:15.614753+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:26:15.675410+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:26:15.678873+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:26:15.807999+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:26:15.820052+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:26:15.857507+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:26:15.866854+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:26:15.901698+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:26:15.905168+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:26:15.912795+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:26:15.929639+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:26:15.967160+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:26:15.987509+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:26:16.002466+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:26:16.004778+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:26:16.018367+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:26:16.021692+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:26:16.033983+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:26:16.037346+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:26:16.059837+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:26:16.133611+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:26:16.154971+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:26:16.194545+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:26:16.203785+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:26:16.204865+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:26:16.235081+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:26:16.263417+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:26:16.277430+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:26:16.290840+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:26:16.323460+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:26:16.365717+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:26:16.382304+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:16.382312+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:16.382312+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:16.382313+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:16.382314+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:16.382315+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:16.382346+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:16.382413+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:16.382478+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:16.382525+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:16.382596+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:16.382633+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:16.382670+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:16.382705+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:16.382741+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:16.382777+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:16.382814+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:16.382851+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:16.382879+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:16.382937+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:16.382948+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:16.382959+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:16.382968+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:16.383188+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:16.383195+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:16.383208+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:16.383219+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:16.383230+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:16.383241+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:16.383252+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:16.383262+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:16.383272+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:16.383282+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:16.383293+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:16.383303+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:16.383315+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:16.383325+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:16.383335+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:16.383346+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:16.383356+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:16.383373+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:16.383374+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:16.383384+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:16.383394+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:16.383399+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:16.383410+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:16.383419+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:16.383429+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:16.383439+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:16.383449+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:16.383458+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:16.383468+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:16.383479+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:16.383489+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:16.383499+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:16.383509+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:16.383518+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:16.383528+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:16.383557+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:16.383563+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:16.383573+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:16.383583+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:16.383593+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:16.383603+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:16.383612+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:16.383622+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:16.383632+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:16.383642+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:16.383651+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:16.383661+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:16.383671+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:16.383681+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:16.383691+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:16.383701+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:16.383710+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:16.383720+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:16.383730+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:16.383740+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:16.383763+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:16.383763+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:16.383763+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:16.383777+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:16.383787+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:16.383797+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:16.383807+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:16.383817+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:16.383827+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:16.383838+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:16.383848+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:16.383853+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:16.383863+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:16.383873+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:16.383886+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:16.383897+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:16.383906+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:16.383916+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:16.383927+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:16.383937+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:16.383948+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:16.383958+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:16.384017+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:16.394544+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:26:16.408782+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:26:16.424096+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:26:16.446426+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:26:16.489119+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:26:16.554722+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:26:16.585113+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:26:16.629223+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:26:16.674648+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:26:16.755892+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:26:18.463785+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:18.463789+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:18.463789+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:18.463790+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:18.463790+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:18.463791+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:18.463792+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:18.463792+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:18.463792+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:18.463793+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:18.463793+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:18.463793+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:18.463794+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:18.463794+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:18.463794+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:18.463794+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:18.463795+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:18.463795+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:18.463796+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:18.463796+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:18.463796+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:18.463796+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:18.463797+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:18.463797+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:18.463797+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:18.463798+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:18.463798+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:18.463798+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:18.463798+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:18.463799+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:18.463799+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:18.463799+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:18.463800+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:18.463800+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:18.463800+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:18.463800+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:18.463801+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:18.463801+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:18.463801+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:18.463801+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:18.463802+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:18.463802+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:18.463802+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:18.463807+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:18.463807+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:18.463807+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:18.463808+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:18.463808+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:18.463808+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:18.463808+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:18.463809+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:18.463809+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:18.463809+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:18.463809+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:18.463809+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:18.463810+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:18.463815+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:18.463815+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:18.463816+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:18.463816+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:18.463816+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:18.463816+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:18.463816+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:18.463817+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:18.463817+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:18.463817+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:18.463817+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:18.463818+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:18.463818+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:18.463818+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:18.463818+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:18.463819+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:18.463819+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:18.463819+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:18.463819+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:18.463819+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:18.463820+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:18.463820+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:18.463820+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:18.463820+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:18.463820+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:18.463821+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:18.463821+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:18.463821+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:18.463821+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:18.463822+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:18.463822+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:18.463822+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:18.463823+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:18.463823+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:18.463823+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:18.463823+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:18.463824+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:18.463824+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:18.463824+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:18.463825+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:18.463825+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:18.463825+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:18.463826+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:18.463826+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:18.463826+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:20.754928+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:26:20.759661+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:26:20.819714+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:26:20.863754+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:26:20.865014+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:26:20.899771+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:26:20.932893+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:26:20.949902+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:26:20.963879+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:26:20.975007+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:26:21.037796+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:26:21.042316+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:26:21.070787+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:26:21.100802+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:26:21.107323+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:26:21.158018+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:26:21.188914+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:26:21.217082+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:26:21.225738+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:26:21.227662+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:26:21.238741+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:26:21.244762+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:26:21.265857+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:26:21.271547+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:26:21.333194+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:26:21.365586+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:26:21.422153+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:26:21.432746+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:26:21.437104+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:26:21.451959+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:26:21.606280+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:26:21.630181+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:26:21.645537+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:26:21.691245+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:26:21.741339+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:26:21.755639+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:26:21.759078+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:26:21.765967+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:26:21.825513+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:26:21.879692+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:26:21.886138+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:26:21.918727+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:21.918728+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:21.918729+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:21.918730+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:21.918736+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:21.918742+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:21.918754+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:21.918764+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:21.918775+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:21.918786+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:21.918792+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:21.918800+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:21.918812+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:21.918822+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:21.918827+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:21.918837+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:21.918847+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:21.918856+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:21.918867+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:21.918878+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:21.918880+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:21.918891+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:21.918910+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:21.919078+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:21.919086+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:21.919098+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:21.919102+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:21.919112+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:21.919126+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:21.919148+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:21.919153+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:21.919153+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:21.919164+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:21.919164+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:21.919175+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:21.919175+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:21.919186+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:21.919186+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:21.919188+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:21.919198+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:21.919199+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:21.919210+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:21.919210+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:21.919213+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:21.919223+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:21.919234+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:21.919244+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:21.919246+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:21.919256+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:21.919257+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:21.919266+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:21.919266+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:21.919270+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:21.919278+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:21.919286+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:21.919286+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:21.919296+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:21.919305+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:21.919314+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:21.919323+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:21.919332+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:21.919334+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:21.919342+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:21.919351+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:21.919351+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:21.919359+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:21.919367+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:21.919367+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:21.919377+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:21.919378+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:21.919386+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:21.919387+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:21.919397+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:21.919408+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:21.919410+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:21.919415+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:21.919427+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:21.919428+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:21.919439+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:21.919439+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:21.919441+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:21.919449+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:21.919459+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:21.919459+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:21.919468+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:21.919479+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:21.919490+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:21.919499+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:21.919499+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:21.919508+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:21.919509+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:21.919517+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:21.919525+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:21.919525+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:21.919533+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:21.919534+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:21.919543+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:21.919551+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:21.919551+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:21.919560+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:21.919560+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:21.958065+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:26:22.855294+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:22.855313+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:22.855313+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:22.855314+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:22.855315+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:22.855327+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:22.855328+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:22.855328+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:22.855328+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:22.855328+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:22.855330+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:22.855330+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:22.855330+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:22.855341+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:22.855341+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:22.855350+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:22.855350+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:22.855360+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:22.855361+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:22.855369+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:22.855370+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:22.855374+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:22.855382+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:22.855571+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:22.855582+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:22.855582+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:22.855591+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:22.855595+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:22.855597+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:22.855601+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:22.855612+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:22.855612+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:22.855614+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:22.855624+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:22.855625+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:22.855638+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:22.855640+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:22.855651+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:22.855661+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:22.855672+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:22.855673+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:22.855675+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:22.855685+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:22.855687+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:22.855692+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:22.855702+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:22.855702+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:22.855712+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:22.855714+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:22.855719+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:22.855731+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:22.855733+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:22.855744+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:22.855745+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:22.855758+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:22.855758+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:22.855759+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:22.855765+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:22.855777+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:22.855777+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:22.855780+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:22.855790+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:22.855790+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:22.855793+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:22.855798+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:22.855844+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:22.855844+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:22.855844+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:22.855845+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:22.855845+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:22.855846+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:22.855846+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:22.855847+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:22.855847+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:22.855847+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:22.855849+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:22.855851+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:22.855860+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:22.855860+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:22.855870+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:22.855870+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:22.855881+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:22.855881+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:22.855892+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:22.855919+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:22.855920+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:22.855932+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:22.855938+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:22.855940+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:22.855945+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:22.855957+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:22.855957+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:22.855967+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:22.855972+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:22.855983+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:22.855985+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:22.855995+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:22.855995+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:22.856000+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:22.856009+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:22.856010+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:25.387397+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:25.387417+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:25.387418+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:25.387419+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:25.387420+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:25.387420+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:25.387421+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:25.387431+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:25.387439+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:25.387439+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:25.387440+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:25.388260+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:25.388261+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:25.388261+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:25.388262+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:25.388262+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:25.388262+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:25.388263+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:25.388263+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:25.388264+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:25.388264+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:25.388264+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:25.388265+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:25.388265+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:25.388265+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:25.388266+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:25.388266+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:25.388266+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:25.388267+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:25.388267+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:25.388267+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:25.388268+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:25.388268+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:25.388268+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:25.388268+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:25.388268+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:25.388269+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:25.388269+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:25.388270+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:25.388270+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:25.388270+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:25.388270+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:25.388271+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:25.388271+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:25.388271+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:25.388271+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:25.388272+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:25.388272+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:25.388272+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:25.388272+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:25.388273+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:25.388273+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:25.388273+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:25.388273+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:25.388273+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:25.388274+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:25.388274+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:25.388274+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:25.388274+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:25.388274+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:25.388275+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:25.388275+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:25.388275+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:25.388275+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:25.388275+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:25.388276+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:25.388276+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:25.388276+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:25.388276+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:25.388276+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:25.388277+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:25.388281+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:25.388281+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:25.388281+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:25.388281+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:25.388281+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:25.388282+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:25.388282+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:25.388282+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:25.388282+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:25.388283+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:25.388296+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:25.388297+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:25.388297+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:25.388297+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:25.388298+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:25.388298+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:25.388298+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:25.388299+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:25.388299+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:25.388299+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:25.388300+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:25.388300+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:25.388300+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:25.388301+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:25.388301+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:25.831101+00:00 app[web.1]: 0|manulite  | ✅ [94772148914creds.json] Bot connected!
+2025-12-29T08:26:25.943190+00:00 app[web.1]: 0|manulite  | ✅ [94772411839creds.json] Bot connected!
+2025-12-29T08:26:26.004181+00:00 app[web.1]: 0|manulite  | ✅ [92305883974creds.json] Bot connected!
+2025-12-29T08:26:26.007269+00:00 app[web.1]: 0|manulite  | ✅ [93766251700creds.json] Bot connected!
+2025-12-29T08:26:26.097852+00:00 app[web.1]: 0|manulite  | ✅ [94714747716creds.json] Bot connected!
+2025-12-29T08:26:26.102745+00:00 app[web.1]: 0|manulite  | ✅ [94707777502creds.json] Bot connected!
+2025-12-29T08:26:26.104971+00:00 app[web.1]: 0|manulite  | ✅ [23480521490creds.json] Bot connected!
+2025-12-29T08:26:26.141521+00:00 app[web.1]: 0|manulite  | ✅ [25474040384creds.json] Bot connected!
+2025-12-29T08:26:26.195545+00:00 app[web.1]: 0|manulite  | ✅ [23491291373creds.json] Bot connected!
+2025-12-29T08:26:26.216062+00:00 app[web.1]: 0|manulite  | ✅ [26371750717creds.json] Bot connected!
+2025-12-29T08:26:26.217927+00:00 app[web.1]: 0|manulite  | ✅ [94703549793creds.json] Bot connected!
+2025-12-29T08:26:26.230014+00:00 app[web.1]: 0|manulite  | ✅ [94703975424creds.json] Bot connected!
+2025-12-29T08:26:26.238762+00:00 app[web.1]: 0|manulite  | ✅ [23481847842creds.json] Bot connected!
+2025-12-29T08:26:26.247241+00:00 app[web.1]: 0|manulite  | ✅ [93744372742creds.json] Bot connected!
+2025-12-29T08:26:26.271087+00:00 app[web.1]: 0|manulite  | ✅ [94787822974creds.json] Bot connected!
+2025-12-29T08:26:26.298169+00:00 app[web.1]: 0|manulite  | ✅ [94704252127creds.json] Bot connected!
+2025-12-29T08:26:26.348057+00:00 app[web.1]: 0|manulite  | ✅ [94756569120creds.json] Bot connected!
+2025-12-29T08:26:26.365562+00:00 app[web.1]: 0|manulite  | ✅ [94703518414creds.json] Bot connected!
+2025-12-29T08:26:26.372646+00:00 app[web.1]: 0|manulite  | ✅ [23481045377creds.json] Bot connected!
+2025-12-29T08:26:26.390548+00:00 app[web.1]: 0|manulite  | ✅ [25579355546creds.json] Bot connected!
+2025-12-29T08:26:26.455113+00:00 app[web.1]: 0|manulite  | ✅ [94766309563creds.json] Bot connected!
+2025-12-29T08:26:26.518516+00:00 app[web.1]: 0|manulite  | ✅ [94703037422creds.json] Bot connected!
+2025-12-29T08:26:26.551813+00:00 app[web.1]: 0|manulite  | ✅ [94750862852creds.json] Bot connected!
+2025-12-29T08:26:26.563252+00:00 app[web.1]: 0|manulite  | ✅ [23491142875creds.json] Bot connected!
+2025-12-29T08:26:26.583706+00:00 app[web.1]: 0|manulite  | ✅ [94720723096creds.json] Bot connected!
+2025-12-29T08:26:26.600892+00:00 app[web.1]: 0|manulite  | ✅ [23470769106creds.json] Bot connected!
+2025-12-29T08:26:26.604096+00:00 app[web.1]: 0|manulite  | ✅ [94766842182creds.json] Bot connected!
+2025-12-29T08:26:26.615989+00:00 app[web.1]: 0|manulite  | ✅ [96656974913creds.json] Bot connected!
+2025-12-29T08:26:26.679992+00:00 app[web.1]: 0|manulite  | ✅ [94716985329creds.json] Bot connected!
+2025-12-29T08:26:26.732732+00:00 app[web.1]: 0|manulite  | ✅ [25676103017creds.json] Bot connected!
+2025-12-29T08:26:26.772337+00:00 app[web.1]: 0|manulite  | ✅ [94762907513creds.json] Bot connected!
+2025-12-29T08:26:26.785706+00:00 app[web.1]: 0|manulite  | ✅ [94729701030creds.json] Bot connected!
+2025-12-29T08:26:26.817885+00:00 app[web.1]: 0|manulite  | ✅ [92309510033creds.json] Bot connected!
+2025-12-29T08:26:26.823575+00:00 app[web.1]: 0|manulite  | ✅ [25568244918creds.json] Bot connected!
+2025-12-29T08:26:26.840006+00:00 app[web.1]: 0|manulite  | ✅ [50947146649creds.json] Bot connected!
+2025-12-29T08:26:26.843634+00:00 app[web.1]: 0|manulite  | ✅ [94773050501creds.json] Bot connected!
+2025-12-29T08:26:26.942400+00:00 app[web.1]: 0|manulite  | ✅ [94701606739creds.json] Bot connected!
+2025-12-29T08:26:26.957894+00:00 app[web.1]: 0|manulite  | ✅ [94776828743creds.json] Bot connected!
+2025-12-29T08:26:26.983530+00:00 app[web.1]: 0|manulite  | ✅ [24102861820creds.json] Bot connected!
+2025-12-29T08:26:27.075931+00:00 app[web.1]: 0|manulite  | ✅ [94783790681creds.json] Bot connected!
+2025-12-29T08:26:27.167723+00:00 app[web.1]: 0|manulite  | ✅ [94701339387creds.json] Bot connected!
+2025-12-29T08:26:27.197404+00:00 app[web.1]: 0|manulite  | ✅ [92316316645creds.json] Bot connected!
+2025-12-29T08:26:28.071503+00:00 app[web.1]: 0|manulite  | Error: Connection Closed
+2025-12-29T08:26:28.071515+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:28.071516+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:28.071518+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:28.071519+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:28.071519+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:28.071521+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:28.071534+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:28.071539+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:28.071559+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:28.071560+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:28.071563+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:28.071575+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:28.071585+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:28.071595+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:28.071626+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:28.071627+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:28.071628+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:28.071628+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:28.071632+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:28.071653+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:28.071664+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:28.071675+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:28.071920+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:28.071923+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:28.071935+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:28.071942+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:28.071948+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:28.071960+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:28.071971+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:28.071980+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:28.071990+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:28.071991+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:28.072005+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:28.072005+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:28.072005+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:28.072008+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:28.072018+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:28.072019+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:28.072042+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:28.072043+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:28.072051+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:28.072059+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:28.072060+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:28.072068+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:28.072077+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:28.072077+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:28.072108+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:28.072108+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:28.072108+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:28.072108+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:28.072108+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:28.072109+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:28.072118+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:28.072127+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:28.072127+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:28.072136+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:28.072137+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:28.072145+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:28.072154+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:28.072154+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:28.072163+00:00 app[web.1]: 0|manulite  | }
+2025-12-29T08:26:28.072173+00:00 app[web.1]: 0|manulite  | ⚠️ Unhandled Rejection at: Promise {
+2025-12-29T08:26:28.072182+00:00 app[web.1]: 0|manulite  |   <rejected> Error: Connection Closed
+2025-12-29T08:26:28.072183+00:00 app[web.1]: 0|manulite  |       at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:28.072191+00:00 app[web.1]: 0|manulite  |       at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:28.072200+00:00 app[web.1]: 0|manulite  |       at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:28.072200+00:00 app[web.1]: 0|manulite  |       at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:28.072208+00:00 app[web.1]: 0|manulite  |       at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:28.072216+00:00 app[web.1]: 0|manulite  |       at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:28.072216+00:00 app[web.1]: 0|manulite  |       at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:28.072225+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:28.072232+00:00 app[web.1]: 0|manulite  |       at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:28.072232+00:00 app[web.1]: 0|manulite  |     data: null,
+2025-12-29T08:26:28.072236+00:00 app[web.1]: 0|manulite  |     isBoom: true,
+2025-12-29T08:26:28.072246+00:00 app[web.1]: 0|manulite  |     isServer: false,
+2025-12-29T08:26:28.072255+00:00 app[web.1]: 0|manulite  |     output: { statusCode: 428, payload: [Object], headers: {} }
+2025-12-29T08:26:28.072264+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:28.072273+00:00 app[web.1]: 0|manulite  | } reason: Error: Connection Closed
+2025-12-29T08:26:28.072273+00:00 app[web.1]: 0|manulite  |     at sendRawMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:59:19)
+2025-12-29T08:26:28.072282+00:00 app[web.1]: 0|manulite  |     at sendNode (/app/node_modules/@whiskeysockets/baileys/lib/Socket/socket.js:78:16)
+2025-12-29T08:26:28.072290+00:00 app[web.1]: 0|manulite  |     at /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:578:19
+2025-12-29T08:26:28.072290+00:00 app[web.1]: 0|manulite  |     at async Object.transaction (/app/node_modules/@whiskeysockets/baileys/lib/Utils/auth-utils.js:136:26)
+2025-12-29T08:26:28.072300+00:00 app[web.1]: 0|manulite  |     at async relayMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:295:9)
+2025-12-29T08:26:28.072300+00:00 app[web.1]: 0|manulite  |     at async sendPeerDataOperationMessage (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-send.js:218:23)
+2025-12-29T08:26:28.072308+00:00 app[web.1]: 0|manulite  |     at async sendRetryRequest (/app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:157:27)
+2025-12-29T08:26:28.072316+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Socket/messages-recv.js:766:33
+2025-12-29T08:26:28.072316+00:00 app[web.1]: 0|manulite  |     at async /app/node_modules/@whiskeysockets/baileys/lib/Utils/make-mutex.js:18:36 {
+2025-12-29T08:26:28.072327+00:00 app[web.1]: 0|manulite  |   data: null,
+2025-12-29T08:26:28.072338+00:00 app[web.1]: 0|manulite  |   isBoom: true,
+2025-12-29T08:26:28.072351+00:00 app[web.1]: 0|manulite  |   isServer: false,
+2025-12-29T08:26:28.072354+00:00 app[web.1]: 0|manulite  |   output: {
+2025-12-29T08:26:28.072364+00:00 app[web.1]: 0|manulite  |     statusCode: 428,
+2025-12-29T08:26:28.072375+00:00 app[web.1]: 0|manulite  |     payload: {
+2025-12-29T08:26:28.072384+00:00 app[web.1]: 0|manulite  |       statusCode: 428,
+2025-12-29T08:26:28.072393+00:00 app[web.1]: 0|manulite  |       error: 'Precondition Required',
+2025-12-29T08:26:28.072402+00:00 app[web.1]: 0|manulite  |       message: 'Connection Closed'
+2025-12-29T08:26:28.072412+00:00 app[web.1]: 0|manulite  |     },
+2025-12-29T08:26:28.072421+00:00 app[web.1]: 0|manulite  |     headers: {}
+2025-12-29T08:26:28.072430+00:00 app[web.1]: 0|manulite  |   }
+2025-12-29T08:26:28.072436+00:00 app[web.1]: 0|manulite  | }
