@@ -835,6 +835,7 @@
       "💚"
     ],
     "timestamp": "2025-12-30T09:08:40.379Z",
-    "processed": false
+    "processed": true,
+    "processed_at": "2025-12-30T09:08:41.220Z"
   }
 }
