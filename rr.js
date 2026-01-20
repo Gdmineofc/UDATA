@@ -18,7 +18,7 @@ let syncTimer = null;
 const defaults = {
   BOT_NAME: "ＭＡＮＵ-ＭＤ",
   OWNER_NUMBER: "94742274855",
-  OWNER_NAME: "©𝐌𝐑 𝐌𝐀𝐍𝐔𝐋 𝐎ｍＣ 💚",
+  OWNER_NAME: "©𝐌𝐑 𝐌𝐀𝐍ＵＬ 𝐎ｍＣ 💚",
   OWNER_FROM: "Sri Lanka",
   BUTTON: "true",
   OWNER_AGE: "+99",
@@ -45,7 +45,7 @@ const defaults = {
   OWNER_IMG: "https://my-private-api-site.vercel.app/manu-md",
   MENU_LOGO: "https://my-private-api-site.vercel.app/manu-md",
   ALIVE_LOGO: "https://my-private-api-site.vercel.app/manu-md",
-  ALIVE_MSG: "⚖️𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 - : ©𝐌𝐑 𝐌𝐀𝐍𝐔𝐋 𝐎ｍＣ 💚",
+  ALIVE_MSG: "⚖️𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 - : ©𝐌𝐑 𝐌𝐀𝐍ＵＬ 𝐎ｍＣ 💚",
   AUTO_DP_CHANGE: "false",
   AUTO_DP: "",
   BAN: "",
@@ -131,7 +131,7 @@ async function ensureSettingsDir() {
   }
 }
 
-// Initialize MongoDB connection (ONLY when needed)
+// Initialize MongoDB connection
 async function initializeMongoDB() {
   if (mongoConnectionAttempted && !isMongoConnected) return null;
   
@@ -156,19 +156,19 @@ async function initializeMongoDB() {
     
     await mongoClient.connect();
     
-    // Test connection with a simple command
+    // Test connection
     await mongoClient.db(DATABASE_NAME).command({ ping: 1 });
     
     isMongoConnected = true;
     console.log('✅ MongoDB connected successfully');
     
-    // Start batch sync timer only if we have pending syncs
+    // Start batch sync timer
     if (!syncTimer) {
       syncTimer = setInterval(async () => {
         if (syncQueue.size > 0) {
           await syncBatchToMongoDB();
         }
-      }, 60000); // Check every minute
+      }, 60000);
     }
     
     return mongoClient;
@@ -180,12 +180,65 @@ async function initializeMongoDB() {
   }
 }
 
-// Get MongoDB client (lazy initialization)
+// Get MongoDB client
 async function getMongoClient() {
   if (!isMongoConnected) {
     return await initializeMongoDB();
   }
   return mongoClient;
+}
+
+// Check if document exists in MongoDB
+async function checkMongoDBExists(ownerNumber) {
+  const cleanNumber = cleanOwnerNumber(ownerNumber);
+  if (!cleanNumber || !isMongoConnected) return null;
+  
+  try {
+    const client = await getMongoClient();
+    if (!client) return null;
+    
+    const db = client.db(DATABASE_NAME);
+    const collection = db.collection(COLLECTION_NAME);
+    
+    const existingDoc = await collection.findOne({ ownerNumber: cleanNumber });
+    return existingDoc;
+  } catch (error) {
+    console.error(`❌ Error checking MongoDB for ${cleanNumber}:`, error.message);
+    return null;
+  }
+}
+
+// Load from MongoDB and save to JSON
+async function loadFromMongoDB(ownerNumber) {
+  const cleanNumber = cleanOwnerNumber(ownerNumber);
+  if (!cleanNumber) return null;
+  
+  try {
+    const existingDoc = await checkMongoDBExists(cleanNumber);
+    if (!existingDoc) return null;
+    
+    // Convert MongoDB document to settings format
+    const settings = {
+      ownerNumber: cleanNumber,
+      ...defaults,
+      ...existingDoc,
+      _source: 'mongo',
+      _lastLoaded: Date.now(),
+      _isTemp: true  // Still temp until updated
+    };
+    
+    // Remove MongoDB _id field
+    delete settings._id;
+    
+    // Save to JSON file
+    await saveToJSON(cleanNumber, settings);
+    
+    console.log(`✅ Loaded existing settings from MongoDB for ${cleanNumber}`);
+    return settings;
+  } catch (error) {
+    console.error(`❌ Error loading from MongoDB for ${cleanNumber}:`, error.message);
+    return null;
+  }
 }
 
 // JSON file operations
@@ -232,7 +285,7 @@ async function saveToJSON(ownerNumber, settings) {
   }
 }
 
-// Load or create settings - JSON FIRST, MongoDB ONLY when updating
+// Load or create settings - Check MongoDB first if exists, otherwise defaults
 async function loadSettings(ownerNumber) {
   const cleanNumber = cleanOwnerNumber(ownerNumber);
   if (!cleanNumber) {
@@ -245,31 +298,46 @@ async function loadSettings(ownerNumber) {
     return cached;
   }
   
-  // 2. ALWAYS try JSON file first (primary source)
+  // 2. Try JSON file
   const jsonSettings = await loadFromJSON(cleanNumber);
   if (jsonSettings) {
     settingsCache.set(cleanNumber, jsonSettings);
     return jsonSettings;
   }
   
-  // 3. If JSON doesn't exist, create TEMPORARY defaults
-  // DO NOT check MongoDB here!
-  const tempSettings = {
-    ownerNumber: cleanNumber,
-    ...defaults,
-    _source: 'temp',
-    _isTemp: true,
-    _createdAt: Date.now()
-  };
+  // 3. JSON doesn't exist - Initialize MongoDB connection
+  if (!isMongoConnected && !mongoConnectionAttempted) {
+    await initializeMongoDB();
+  }
   
-  // Save temp settings to JSON
-  await saveToJSON(cleanNumber, tempSettings);
+  // 4. Check if document exists in MongoDB
+  let settings = null;
   
-  // Cache temp settings
-  settingsCache.set(cleanNumber, tempSettings);
+  if (isMongoConnected) {
+    // Try to load from MongoDB
+    settings = await loadFromMongoDB(cleanNumber);
+  }
   
-  console.log(`✅ Created temp settings for ${cleanNumber} (JSON only)`);
-  return tempSettings;
+  // 5. If no MongoDB document exists, create TEMPORARY defaults
+  if (!settings) {
+    settings = {
+      ownerNumber: cleanNumber,
+      ...defaults,
+      _source: 'temp',
+      _isTemp: true,
+      _createdAt: Date.now()
+    };
+    
+    // Save temp settings to JSON
+    await saveToJSON(cleanNumber, settings);
+    
+    console.log(`✅ Created temp settings for ${cleanNumber} (JSON only, no MongoDB document)`);
+  }
+  
+  // Cache settings
+  settingsCache.set(cleanNumber, settings);
+  
+  return settings;
 }
 
 // Alias for loadSettings
@@ -277,7 +345,7 @@ async function readEnv(ownerNumber) {
   return await loadSettings(ownerNumber);
 }
 
-// Initialize/ensure settings exist (creates JSON only)
+// Initialize/ensure settings exist
 async function defEnv(ownerNumber) {
   const cleanNumber = cleanOwnerNumber(ownerNumber);
   if (!cleanNumber) return false;
@@ -307,25 +375,26 @@ async function syncBatchToMongoDB() {
     const queueEntries = Array.from(syncQueue.entries());
     
     for (const [ownerNumber, settings] of queueEntries) {
-      // Skip temp settings - they don't go to MongoDB
+      // Skip temp settings
       if (settings._isTemp) {
         syncQueue.delete(ownerNumber);
         continue;
       }
       
       // Remove internal metadata
-      const { _source, _lastLoaded, _lastUpdated, _isTemp, _createdAt, ...cleanSettings } = settings;
+      const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = settings;
       
-      // Prepare update operation - FIXED: don't include _createdAt in $set
+      // Prepare update operation
       const updateDoc = {
         $set: {
           ...cleanSettings,
-          _lastSynced: now,
           _updatedAt: now
+        },
+        $setOnInsert: {
+          _createdAt: now
         }
       };
       
-      // Only add $setOnInsert for new documents
       operations.push({
         updateOne: {
           filter: { ownerNumber },
@@ -347,7 +416,7 @@ async function syncBatchToMongoDB() {
   }
 }
 
-// Update settings - this is where MongoDB comes into play
+// Update settings - this creates MongoDB document if it doesn't exist
 async function updateEnv(ownerNumber, key, newValue) {
   const cleanNumber = cleanOwnerNumber(ownerNumber);
   if (!cleanNumber || !key) {
@@ -382,7 +451,7 @@ async function updateEnv(ownerNumber, key, newValue) {
       ...currentSettings,
       [key]: updatedValue,
       _lastUpdated: Date.now(),
-      _isTemp: false // Mark as permanent once updated
+      _isTemp: false // Mark as permanent
     };
     
     // Update cache
@@ -390,11 +459,6 @@ async function updateEnv(ownerNumber, key, newValue) {
     
     // ALWAYS save to JSON immediately
     await saveToJSON(cleanNumber, updatedSettings);
-    
-    // If settings were temp and this is the first update, initialize MongoDB if not already
-    if (wasTemp && !isMongoConnected) {
-      await initializeMongoDB();
-    }
     
     // Queue for MongoDB sync if connected
     if (isMongoConnected) {
@@ -405,9 +469,36 @@ async function updateEnv(ownerNumber, key, newValue) {
         // Small delay to allow other operations to queue
         setTimeout(async () => {
           if (syncQueue.has(cleanNumber)) {
-            await syncBatchToMongoDB();
+            try {
+              const client = await getMongoClient();
+              if (client) {
+                const db = client.db(DATABASE_NAME);
+                const collection = db.collection(COLLECTION_NAME);
+                
+                const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = updatedSettings;
+                
+                await collection.updateOne(
+                  { ownerNumber: cleanNumber },
+                  { 
+                    $set: {
+                      ...cleanSettings,
+                      _updatedAt: Date.now()
+                    },
+                    $setOnInsert: {
+                      _createdAt: Date.now()
+                    }
+                  },
+                  { upsert: true }
+                );
+                
+                syncQueue.delete(cleanNumber);
+                console.log(`✅ First-time sync to MongoDB for ${cleanNumber}`);
+              }
+            } catch (error) {
+              console.error(`❌ First-time sync failed for ${cleanNumber}:`, error.message);
+            }
           }
-        }, 2000);
+        }, 1000);
       }
     } else if (wasTemp) {
       console.log(`⚠️ MongoDB not available for first sync of ${cleanNumber}`);
@@ -483,15 +574,17 @@ async function forceSyncToMongoDB(ownerNumber) {
     const collection = db.collection(COLLECTION_NAME);
     
     // Remove internal metadata
-    const { _source, _lastLoaded, _lastUpdated, _isTemp, _createdAt, ...cleanSettings } = settings;
+    const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = settings;
     
     await collection.updateOne(
       { ownerNumber: cleanNumber },
       { 
         $set: {
           ...cleanSettings,
-          _lastSynced: Date.now(),
           _updatedAt: Date.now()
+        },
+        $setOnInsert: {
+          _createdAt: Date.now()
         }
       },
       { upsert: true }
@@ -515,7 +608,8 @@ async function getAllSettings(ownerNumber) {
   const result = {
     cache: settingsCache.get(cleanNumber),
     json: await loadFromJSON(cleanNumber),
-    mongo: null
+    mongo: null,
+    existsInMongoDB: false
   };
   
   // Try MongoDB if connected
@@ -526,8 +620,9 @@ async function getAllSettings(ownerNumber) {
       const collection = db.collection(COLLECTION_NAME);
       
       result.mongo = await collection.findOne({ ownerNumber: cleanNumber });
+      result.existsInMongoDB = !!result.mongo;
     } catch (error) {
-      // Silent fail - MongoDB might not be available
+      // Silent fail
     }
   }
   
@@ -580,7 +675,7 @@ async function closeConnection() {
 // Initialize on module load
 (async () => {
   await ensureSettingsDir();
-  console.log('✅ Settings manager initialized (JSON mode)');
+  console.log('✅ Settings manager initialized');
 })();
 
 // Handle process cleanup
@@ -602,6 +697,7 @@ module.exports = {
   getAllSettings,
   getSyncQueueStatus,
   initializeMongoDB,
+  checkMongoDBExists,
   
   // Utility functions
   cleanOwnerNumber,
