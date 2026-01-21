@@ -1,715 +1,406 @@
-const fs = require('fs-extra');
-const path = require('path');
-const { MongoClient } = require('mongodb');
+Change my antidelete code like this.👇
 
-// Configuration
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://manulmihisara9_db_user:ym41ZGDc1l2FGYZs@my.oc6wyc2.mongodb.net/';
-const DATABASE_NAME = 'MANUDB';
-const COLLECTION_NAME = 'SETTINGS';
+Don't store any media directly in memory, store them all in one json with the whatsapp server link and media key and then send it directly if deleted.❤️‍🩹
 
-// Connection state
-let mongoClient = null;
-let isMongoConnected = false;
-let mongoConnectionAttempted = false;
-let syncQueue = new Map();
-let syncTimer = null;
+Here is my antidelete code.👇
+const fs = require('fs');
+const crypto = require('crypto');
+const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 
-// Default settings
-const defaults = {
-  BOT_NAME: "ＭＡＮＵ-ＭＤ",
-  OWNER_NUMBER: "94742274855",
-  OWNER_NAME: "©𝐌𝐑 𝐌𝐀𝐍ＵＬ 𝐎ｍＣ 💚",
-  OWNER_FROM: "Sri Lanka",
-  BUTTON: "true",
-  OWNER_AGE: "+99",
-  PRIFIX: ".",
-  MODE: "private",
-  MANU_LAN: "EN",
-  MOVIE_JIDS: "",
-  AUTO_REACT: "false",
-  ANTI_DELETE: "owner",
-  ANTI_CALL: "false",
-  CALL_REJECT_LIST: "",
-  CALL_OPEN_LIST: "",
-  AUTO_REACT_STATUS: "false",
-  AUTO_TYPING: "false",
-  AUTO_RECODING: "false",
-  ALWAYS_ONLINE: "false",
-  AUTO_READ_STATUS: "false",
-  AUTO_READ_MSG: "false",
-  AUTO_SAVE: "false",
-  CMD_READ: "false",
-  AUTO_VOICE: "false",
-  AUTO_BLOCK: "false",
-  BOT_LOGO: "https://my-private-api-site.vercel.app/manu-md",
-  OWNER_IMG: "https://my-private-api-site.vercel.app/manu-md",
-  MENU_LOGO: "https://my-private-api-site.vercel.app/manu-md",
-  ALIVE_LOGO: "https://my-private-api-site.vercel.app/manu-md",
-  ALIVE_MSG: "⚖️𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 - : ©𝐌𝐑 𝐌𝐀𝐍ＵＬ 𝐎ｍＣ 💚",
-  AUTO_DP_CHANGE: "false",
-  AUTO_DP: "",
-  BAN: "",
-  SUDO: "",
-  AUTO_CHANNEL_SONG: "false",
-  XNX_VIDEO: "false",
-  CHANNEL_JID: "",
-  _source: 'json'
-};
-
-// Simple in-memory cache with TTL
-class SettingsCache {
-  constructor(maxSize = 1000, ttl = 30 * 60 * 1000) {
-    this.maxSize = maxSize;
-    this.ttl = ttl;
-    this.cache = new Map();
-    this.timestamps = new Map();
+function initAntidelete(conn, config) {
+  if (config.ANTI_DELETE !== "true") {
+    console.log('Antidelete feature is disabled');
+    return;
   }
 
-  set(key, value) {
-    // LRU eviction if at capacity
-    if (this.cache.size >= this.maxSize && !this.cache.has(key)) {
-      const oldestKey = Array.from(this.timestamps.entries())
-        .sort((a, b) => a[1] - b[1])[0]?.[0];
-      if (oldestKey) {
-        this.cache.delete(oldestKey);
-        this.timestamps.delete(oldestKey);
+  const MEDIA_DIR = './antidelete_media';
+  if (!fs.existsSync(MEDIA_DIR)) fs.mkdirSync(MEDIA_DIR);
+
+  const STORE_PATH = './temp_msg_store.json';
+  if (!fs.existsSync(STORE_PATH)) fs.writeFileSync(STORE_PATH, JSON.stringify({}));
+
+  let messageStore = JSON.parse(fs.readFileSync(STORE_PATH));
+  
+  function saveStore() {
+    fs.writeFileSync(STORE_PATH, JSON.stringify(messageStore, null, 2));
+  }
+
+  const DEW_NUMBERS = ['94742274855', '94726400295'];
+  const MAX_MEDIA_SIZE = 50 * 1024 * 1024; // 50 MB in bytes
+
+  // Function to generate hash for message content to detect duplicates
+  function generateMessageHash(message, typeKey, chatId) {
+    const content = message.message[typeKey];
+    let contentString = '';
+    
+    if (typeKey === 'conversation') {
+      contentString = content;
+    } else if (typeKey === 'extendedTextMessage') {
+      contentString = content.text;
+    } else {
+      // For media messages, use caption and media key if available
+      contentString = (content.caption || '') + (content.mediaKey || '');
+    }
+    
+    return crypto.createHash('md5').update(chatId + typeKey + contentString).digest('hex');
+  }
+
+  // Function to find duplicate message in store
+  function findDuplicateMessage(chatId, messageHash) {
+    if (!messageStore[chatId]) return null;
+    
+    for (const [msgId, entry] of Object.entries(messageStore[chatId])) {
+      if (entry.messageHash === messageHash) {
+        return { msgId, entry };
       }
     }
-    
-    this.cache.set(key, value);
-    this.timestamps.set(key, Date.now());
+    return null;
   }
 
-  get(key) {
-    if (!this.cache.has(key)) return null;
-    
-    const timestamp = this.timestamps.get(key);
-    if (Date.now() - timestamp > this.ttl) {
-      this.cache.delete(key);
-      this.timestamps.delete(key);
+  async function downloadAndSaveMedia(content, type, filename) {
+    try {
+      const stream = await downloadContentFromMessage(content, type);
+      let buffer = Buffer.from([]);
+      let totalSize = 0;
+
+      for await (const chunk of stream) {
+        totalSize += chunk.length;
+        
+        // Check if media exceeds max size
+        if (totalSize > MAX_MEDIA_SIZE) {
+      //    console.log(`Media too large: ${totalSize} bytes, skipping download`);
+          return null; // Return null if media is too large
+        }
+        
+        buffer = Buffer.concat([buffer, chunk]);
+      }
+
+      const filePath = `${MEDIA_DIR}/${filename}`;
+      fs.writeFileSync(filePath, buffer);
+      return filePath;
+    } catch (err) {
+//      console.log('Media download failed:', err);
       return null;
     }
-    
-    // Update timestamp for LRU
-    this.timestamps.set(key, Date.now());
-    return this.cache.get(key);
   }
 
-  delete(key) {
-    this.cache.delete(key);
-    this.timestamps.delete(key);
-  }
-
-  clear() {
-    this.cache.clear();
-    this.timestamps.clear();
-  }
-
-  get size() {
-    return this.cache.size;
-  }
-}
-
-const settingsCache = new SettingsCache();
-
-// Helper functions
-function cleanOwnerNumber(ownerNumber) {
-  if (!ownerNumber) return '';
-  // Remove 'creds.json' suffix and non-numeric characters
-  return String(ownerNumber)
-    .replace('creds.json', '')
-    .replace(/[^0-9]/g, '')
-    .trim();
-}
-
-async function ensureSettingsDir() {
-  const settingsDir = path.join(__dirname, 'settings');
-  try {
-    await fs.ensureDir(settingsDir);
-  } catch (error) {
-    console.error('❌ Error creating settings directory:', error.message);
-  }
-}
-
-// Initialize MongoDB connection
-async function initializeMongoDB() {
-  if (mongoConnectionAttempted && !isMongoConnected) return null;
+conn.ev.on('messages.upsert', async ({ messages }) => {
+  const msg = messages[0];
+  if (!msg?.message) return;
   
-  mongoConnectionAttempted = true;
+  // Skip if message is from the bot itself
+  if (msg.key.fromMe) return;
   
-  try {
-    console.log('🔄 Attempting MongoDB connection...');
-    
-    mongoClient = new MongoClient(MONGO_URI, {
-      maxPoolSize: 50,
-      minPoolSize: 5,
-      maxIdleTimeMS: 30000,
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-      connectTimeoutMS: 15000,
-      retryWrites: true,
-      retryReads: true,
-      ssl: true,
-      tls: true,
-      family: 4,
-    });
-    
-    await mongoClient.connect();
-    
-    // Test connection
-    await mongoClient.db(DATABASE_NAME).command({ ping: 1 });
-    
-    isMongoConnected = true;
-    console.log('✅ MongoDB connected successfully');
-    
-    // Start batch sync timer
-    if (!syncTimer) {
-      syncTimer = setInterval(async () => {
-        if (syncQueue.size > 0) {
-          await syncBatchToMongoDB();
-        }
-      }, 60000);
-    }
-    
-    return mongoClient;
-  } catch (error) {
-    console.error('❌ MongoDB connection failed:', error.message);
-    isMongoConnected = false;
-    mongoClient = null;
-    return null;
-  }
-}
-
-// Get MongoDB client
-async function getMongoClient() {
-  if (!isMongoConnected) {
-    return await initializeMongoDB();
-  }
-  return mongoClient;
-}
-
-// Check if document exists in MongoDB
-async function checkMongoDBExists(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber || !isMongoConnected) return null;
+  const chatId = msg.key.remoteJid;
+  const msgId = msg.key.id;
   
-  try {
-    const client = await getMongoClient();
-    if (!client) return null;
-    
-    const db = client.db(DATABASE_NAME);
-    const collection = db.collection(COLLECTION_NAME);
-    
-    const existingDoc = await collection.findOne({ ownerNumber: cleanNumber });
-    return existingDoc;
-  } catch (error) {
-    console.error(`❌ Error checking MongoDB for ${cleanNumber}:`, error.message);
-    return null;
+  // SKIP ONLY NEWSLETTER MESSAGES - BUT STORE STATUS BROADCASTS
+  if (chatId?.endsWith('@newsletter')) {
+    //console.log(`Skipped storing newsletter message: ${msgId}`);
+    return;
   }
-}
-
-// Load from MongoDB and save to JSON
-async function loadFromMongoDB(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber) return null;
   
-  try {
-    const existingDoc = await checkMongoDBExists(cleanNumber);
-    if (!existingDoc) return null;
-    
-    // Convert MongoDB document to settings format
-    const settings = {
-      ownerNumber: cleanNumber,
-      ...defaults,
-      ...existingDoc,
-      _source: 'mongo',
-      _lastLoaded: Date.now(),
-      _isTemp: true  // Still temp until updated
+  // CONTINUE PROCESSING STATUS BROADCASTS AND REGULAR MESSAGES
+  const content = msg.message;
+  const typeKey = Object.keys(content)[0];
+  const msgContent = content[typeKey];
+
+  if (!messageStore[chatId]) messageStore[chatId] = {};
+
+  // Generate hash to check for duplicates
+  const messageHash = generateMessageHash(msg, typeKey, chatId);
+  
+  // Check if this message already exists in store
+  const duplicate = findDuplicateMessage(chatId, messageHash);
+  if (duplicate) {
+    //console.log(`Duplicate message detected, skipping storage: ${msgId}`);
+    messageStore[chatId][msgId] = {
+      ...duplicate.entry,
+      isDuplicate: true,
+      originalMsgId: duplicate.msgId,
+      timestamp: Date.now()
     };
-    
-    // Remove MongoDB _id field
-    delete settings._id;
-    
-    // Save to JSON file
-    await saveToJSON(cleanNumber, settings);
-    
-    console.log(`✅ Loaded existing settings from MongoDB for ${cleanNumber}`);
-    return settings;
-  } catch (error) {
-    console.error(`❌ Error loading from MongoDB for ${cleanNumber}:`, error.message);
-    return null;
+    saveStore();
+    return;
   }
-}
 
-// JSON file operations
-async function loadFromJSON(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber) return null;
-  
-  try {
-    await ensureSettingsDir();
-    const filePath = path.join(__dirname, 'settings', `${cleanNumber}.json`);
-    
-    if (await fs.pathExists(filePath)) {
-      const settings = await fs.readJson(filePath);
-      return {
-        ...settings,
-        _source: 'json',
-        _lastLoaded: Date.now(),
-        ownerNumber: cleanNumber
-      };
+  let entry = {
+    type: typeKey,
+    data: '',
+    caption: '',
+    mimetype: '',
+    fileName: '',
+    timestamp: Date.now(),
+    isFromMe: msg.key.fromMe || false,
+    messageHash: messageHash,
+    isDuplicate: false,
+    isStatusBroadcast: chatId?.endsWith('@status') // This should now work correctly
+  };
+
+  // Handle different message types
+  if (typeKey === 'conversation') {
+    entry.type = 'text';
+    entry.data = msgContent;
+  } else if (typeKey === 'extendedTextMessage') {
+    entry.type = 'text';
+    entry.data = msgContent.text;
+  } else {
+    try {
+      if (!msgContent || (typeKey.endsWith('Message') && !msgContent.mediaKey)) {
+        return;
+      }
+      
+      // Check file size before downloading for known media types
+      if (msgContent.fileLength && msgContent.fileLength > MAX_MEDIA_SIZE) {
+        //console.log(`Media file too large: ${msgContent.fileLength} bytes, skipping`);
+        return;
+      }
+      
+      const filePrefix = chatId?.endsWith('@status') ? 'status_' : '';
+      const file = await downloadAndSaveMedia(msgContent, typeKey.replace('Message', ''), `${filePrefix}${msgId}`);
+      
+      if (file) {
+        entry.data = file;
+        entry.caption = msgContent.caption || '';
+        entry.mimetype = msgContent.mimetype || '';
+        entry.fileName = msgContent.fileName || '';
+      } else {
+        // Media was too large, store as text notification instead
+        entry.type = 'text';
+        entry.data = config.LANGUAGE === "sinhala" 
+          ? `[මාධ්‍ය ගොනුව විශාල වැඩිය - ${MAX_MEDIA_SIZE / (1024 * 1024)}MB ඉක්මවා ඇත]`
+          : config.LANGUAGE === "arabic"
+          ? `[ملف الوسائط كبير جدًا - يتجاوز ${MAX_MEDIA_SIZE / (1024 * 1024)}MB]`
+          : `[Media file too large - exceeds ${MAX_MEDIA_SIZE / (1024 * 1024)}MB]`;
+      }
+    } catch (err) {
+      console.log('Media processing failed:', err);
+      return;
     }
-  } catch (error) {
-    console.error(`❌ Error loading JSON for ${cleanNumber}:`, error.message);
   }
-  
-  return null;
-}
 
-async function saveToJSON(ownerNumber, settings) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber || !settings) return false;
+  messageStore[chatId][msgId] = entry;
+  saveStore();
   
-  try {
-    await ensureSettingsDir();
-    const filePath = path.join(__dirname, 'settings', `${cleanNumber}.json`);
-    
-    // Remove internal metadata before saving
-    const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = settings;
-    
-    await fs.writeJson(filePath, cleanSettings, { spaces: 2 });
-    return true;
-  } catch (error) {
-    console.error(`❌ Error saving JSON for ${cleanNumber}:`, error.message);
-    return false;
+  if (chatId?.endsWith('@status')) {
+    // console.log(`Stored status broadcast message: ${msgId} - "${entry.data.substring(0, 50)}..."`);
+  } else {
+    //console.log(`Stored message: ${msgId} in chat: ${chatId}`);
   }
-}
+});
 
-// Load or create settings - Check MongoDB first if exists, otherwise defaults
-async function loadSettings(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber) {
-    return { ...defaults, ownerNumber: '', _source: 'default', _isTemp: true };
-  }
-  
-  // 1. Check cache first
-  const cached = settingsCache.get(cleanNumber);
-  if (cached) {
-    return cached;
-  }
-  
-  // 2. Try JSON file
-  const jsonSettings = await loadFromJSON(cleanNumber);
-  if (jsonSettings) {
-    settingsCache.set(cleanNumber, jsonSettings);
-    return jsonSettings;
-  }
-  
-  // 3. JSON doesn't exist - Initialize MongoDB connection
-  if (!isMongoConnected && !mongoConnectionAttempted) {
-    await initializeMongoDB();
-  }
-  
-  // 4. Check if document exists in MongoDB
-  let settings = null;
-  
-  if (isMongoConnected) {
-    // Try to load from MongoDB
-    settings = await loadFromMongoDB(cleanNumber);
-  }
-  
-  // 5. If no MongoDB document exists, create TEMPORARY defaults
-  if (!settings) {
-    settings = {
-      ownerNumber: cleanNumber,
-      ...defaults,
-      _source: 'temp',
-      _isTemp: true,
-      _createdAt: Date.now()
-    };
+  // SINGLE Messages update event handler - HANDLE ALL DELETIONS
+  conn.ev.on('messages.update', async (updates) => {  
+    //console.log('Messages update detected:', updates.length, 'updates');
     
-    // Save temp settings to JSON
-    await saveToJSON(cleanNumber, settings);
-    
-    console.log(`✅ Created temp settings for ${cleanNumber} (JSON only, no MongoDB document)`);
-  }
-  
-  // Cache settings
-  settingsCache.set(cleanNumber, settings);
-  
-  return settings;
-}
-
-// Alias for loadSettings
-async function readEnv(ownerNumber) {
-  return await loadSettings(ownerNumber);
-}
-
-// Initialize/ensure settings exist
-async function defEnv(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber) return false;
-  
-  try {
-    const settings = await loadSettings(cleanNumber);
-    return !settings._isTemp; // Returns true if settings already existed
-  } catch (error) {
-    console.error(`❌ Error in defEnv for ${cleanNumber}:`, error.message);
-    return false;
-  }
-}
-
-// Batch sync to MongoDB (only for settings that are NOT temp)
-async function syncBatchToMongoDB() {
-  if (!isMongoConnected || syncQueue.size === 0) return;
-  
-  try {
-    const client = await getMongoClient();
-    if (!client) return;
-    
-    const db = client.db(DATABASE_NAME);
-    const collection = db.collection(COLLECTION_NAME);
-    
-    const operations = [];
-    const now = Date.now();
-    const queueEntries = Array.from(syncQueue.entries());
-    
-    for (const [ownerNumber, settings] of queueEntries) {
-      // Skip temp settings
-      if (settings._isTemp) {
-        syncQueue.delete(ownerNumber);
+    for (const update of updates) {  
+      const { key, update: msgUpdate } = update;  
+      
+      // Debug log to see what's happening
+    //  console.log('Processing update:', {
+     //   key: key?.id,
+     //   remoteJid: key?.remoteJid,
+     //   update: msgUpdate
+     // });
+      
+      if (!key || !msgUpdate) continue;
+      
+      // Check if this is a deletion (message set to null)
+      const isDeletion = msgUpdate.message === null;
+      if (!isDeletion) {
+      //  console.log('Not a deletion event, skipping');
         continue;
       }
       
-      // Remove internal metadata
-      const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = settings;
-      
-      // Prepare update operation
-      const updateDoc = {
-        $set: {
-          ...cleanSettings,
-          _updatedAt: now
-        },
-        $setOnInsert: {
-          _createdAt: now
-        }
-      };
-      
-      operations.push({
-        updateOne: {
-          filter: { ownerNumber },
-          update: updateDoc,
-          upsert: true
-        }
-      });
-      
-      syncQueue.delete(ownerNumber);
-    }
-    
-    if (operations.length > 0) {
-      await collection.bulkWrite(operations, { ordered: false });
-      console.log(`✅ Batch synced ${operations.length} settings to MongoDB`);
-    }
-  } catch (error) {
-    console.error('❌ Batch sync failed:', error.message);
-    // Keep items in queue for retry
-  }
-}
+      const chatId = key.remoteJid;  
+      const msgId = key.id;  
+      const participant = key.participant || chatId;  
+      const deleter = participant?.split('@')[0];  
 
-// Update settings - this creates MongoDB document if it doesn't exist
-async function updateEnv(ownerNumber, key, newValue) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber || !key) {
-    console.error('❌ Invalid parameters for update');
-    return false;
-  }
-  
-  try {
-    // Get current settings
-    const currentSettings = await loadSettings(cleanNumber);
-    const wasTemp = currentSettings._isTemp;
-    
-    // Special handling for AUTO_DP
-    let updatedValue = newValue;
-    if (key === "AUTO_DP") {
-      let currentValues = [];
-      if (typeof currentSettings[key] === "string" && currentSettings[key].trim() !== "") {
-        currentValues = currentSettings[key].split(",").map(v => v.trim()).filter(v => v !== "");
+    //  console.log(`Deletion detected - Chat: ${chatId}, Message: ${msgId}, Deleter: ${deleter}`);
+
+      // Skip if message was from the bot itself or from DEW_NUMBERS
+      if (key.fromMe) {
+      //  console.log('Skipping - message from bot itself');
+        continue;
       }
       
-      currentValues.push(newValue);
-      
-      if (currentValues.length > 5) {
-        currentValues.shift();
+      if (DEW_NUMBERS.includes(deleter)) {
+        //console.log('Skipping - message from DEW number');
+        continue;
+      }  
+
+      const original = messageStore?.[chatId]?.[msgId];  
+      if (!original) {
+        //console.log(`Message ${msgId} not found in store for chat ${chatId}`);
+        // Debug: show what's in store for this chat
+        if (messageStore[chatId]) {
+          //console.log(`Available messages in ${chatId}:`, Object.keys(messageStore[chatId]));
+        }
+        continue;
+      }  
+
+    //  console.log(`Found stored message:`, {
+     //   type: original.type,
+     //   data: original.data?.substring(0, 100),
+      //  isStatusBroadcast: original.isStatusBroadcast
+     // });
+
+      // Additional check: if the original message was from the bot, skip
+      if (original.isFromMe) {
+      //  console.log('Skipping - original message was from bot');
+        // Clean up and skip
+        delete messageStore[chatId][msgId];
+        saveStore();
+        continue;
       }
+
+      // For duplicate messages, use the original stored data
+      let messageToSend = original;
+      if (original.isDuplicate && original.originalMsgId) {
+       // console.log(`Using original message: ${original.originalMsgId}`);
+        messageToSend = messageStore[chatId][original.originalMsgId] || original;
+      }
+
+      const captionText = messageToSend.caption ? messageToSend.caption : 'no caption';  
+
+      let messageLine = '';
+      if (messageToSend.type === 'text') {
+        messageLine = config.LANGUAGE === "sinhala" ? `\n*පනිවිඩය ⤵️*\n${messageToSend.data}` :
+                      config.LANGUAGE === "arabic" ? `\n*الرسالة ⤵️*\n${messageToSend.data}` :
+                      `\n*𝙼𝚎𝚜𝚜𝚊𝚐𝚎 ⤵️*\n${messageToSend.data}`;
+      } else if (captionText && captionText.toLowerCase() !== 'no caption') {
+        messageLine = config.LANGUAGE === "sinhala" ? `\n*පනිවිඩය ⤵️*\n${captionText}` :
+                      config.LANGUAGE === "arabic" ? `\n*الرسالة ⤵️*\n${captionText}` :
+                      `\n*𝙼𝚎𝚜𝚜𝚊𝚐𝚎 ⤵️*\n${captionText}`;
+      }
+
+      const senderName = participant.split('@')[0];
+      const targetChat = config.ANTI_SEND === "me" ? conn.user.id.split(":")[0] + "@s.whatsapp.net" : chatId;
+
+      let header = '';
       
-      updatedValue = currentValues.join(",");
-    }
-    
-    // Create updated settings
-    const updatedSettings = {
-      ...currentSettings,
-      [key]: updatedValue,
-      _lastUpdated: Date.now(),
-      _isTemp: false // Mark as permanent
-    };
-    
-    // Update cache
-    settingsCache.set(cleanNumber, updatedSettings);
-    
-    // ALWAYS save to JSON immediately
-    await saveToJSON(cleanNumber, updatedSettings);
-    
-    // Queue for MongoDB sync if connected
-    if (isMongoConnected) {
-      syncQueue.set(cleanNumber, updatedSettings);
+      // Check if this is a status broadcast
+      if (chatId?.endsWith('@status') || original.isStatusBroadcast) {
+        if (config.LANGUAGE === "sinhala") {
+          header = `*🛑 ස්ටැටස් පණිවිඩයක් මකා දමා ඇත !*\n*📢 ස්ටැටස් යවන්නා - ${senderName}*\n*🗑️ මකා දැමූවේ - ${deleter}*${messageLine}`;
+        } else if (config.LANGUAGE === "arabic") {
+          header = `*🛑 تم حذف حالة!*\n*📢 مرسل الحالة - ${senderName}*\n*🗑️ تم الحذف من قبل - ${deleter}*${messageLine}`;
+        } else {
+          header = `*𝗦𝘁𝗮𝘁𝘂𝘀 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 ‼️*\n*📢 𝗦𝘁𝗮𝘁𝘂𝘀 𝗦𝗲𝗻𝗱𝗲𝗿 - ${senderName}*\n*🗑️ 𝙳𝚎𝚕𝚎𝚝𝚎𝚍 𝙱𝚢 - ${deleter}*${messageLine}`;
+        }
+      } 
+      // Check if this is a broadcast channel (newsletter)
+      else if (chatId?.endsWith('@newsletter')) {
+        if (config.LANGUAGE === "sinhala") {
+          header = `*🛑 නාලිකා පණිවිඩයක් මකා දමා ඇත !*\n*📢 නාලිකාව - ${senderName}*\n*🗑️ මකා දැමූවේ - ${deleter}*${messageLine}`;
+        } else if (config.LANGUAGE === "arabic") {
+          header = `*🛑 تم حذف رسالة قناة!*\n*📢 القناة - ${senderName}*\n*🗑️ تم الحذف من قبل - ${deleter}*${messageLine}`;
+        } else {
+          header = `*𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 ‼️*\n*📢 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 - ${senderName}*\n*🗑️ 𝙳𝚎𝚕𝚎𝚝𝚎𝚍 𝙱𝚢 - ${deleter}*${messageLine}`;
+        }
+      }
+      // Regular chat/group message
+      else {
+        if (config.LANGUAGE === "sinhala") {
+          header = `*🛑 පණිවිඩයක් මකා දමා ඇත !*\n*💬 චැට් - ${chatId.includes('@g.us') ? 'සමූහය' : senderName}*\n*👤 යවන්නා - ${senderName}*\n*🗑️ මකා දැමූවේ - ${deleter}*${messageLine}`;
+        } else if (config.LANGUAGE === "arabic") {
+          header = `*🛑 تم حذف رسالة!*\n*💬 الدردشة - ${chatId.includes('@g.us') ? 'مجموعة' : senderName}*\n*👤 المرسل - ${senderName}*\n*🗑️ تم الحذف من قبل - ${deleter}*${messageLine}`;
+        } else {
+          header = `*𝗧𝗵𝗶𝘀 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 ‼️*\n*𝙲𝚑𝚊𝚝 - ${chatId.includes('@g.us') ? 'group' : senderName}*\n*𝚂𝚎𝚗𝚍𝚎𝚛 - ${senderName}*\n*𝙳𝚎𝚕𝚎𝚝𝚎𝚍 𝙱𝚢 - ${deleter}*${messageLine}`;
+        }
+      }
+
+     // console.log(`Sending antidelete notification to: ${targetChat}`);
       
-      // If this was a temp setting being saved for first time, sync immediately
-      if (wasTemp) {
-        // Small delay to allow other operations to queue
-        setTimeout(async () => {
-          if (syncQueue.has(cleanNumber)) {
+      try {  
+        switch (messageToSend.type) {  
+          case 'text':  
+            await conn.sendMessage(targetChat, { text: header });  
+            //console.log('Text message sent successfully');
+            break;  
+          case 'imageMessage':  
+            await conn.sendMessage(targetChat, {  
+              image: fs.readFileSync(messageToSend.data),  
+              caption: header  
+            });  
+            //console.log('Image message sent successfully');
+            break;  
+          case 'videoMessage':  
+            await conn.sendMessage(targetChat, {  
+              video: fs.readFileSync(messageToSend.data),  
+              caption: header  
+            });  
+           // console.log('Video message sent successfully');
+            break;  
+          case 'audioMessage': {  
+            const audioMsg = await conn.sendMessage(targetChat, {  
+              audio: fs.readFileSync(messageToSend.data),  
+              mimetype: messageToSend.mimetype || 'audio/mp4'  
+            });  
+            await conn.sendMessage(targetChat, {  
+              text: header  
+            }, {  
+              quoted: audioMsg.key ? { key: audioMsg.key, message: audioMsg.message } : undefined  
+            });  
+         //   console.log('Audio message sent successfully');
+            break;  
+          }  
+          case 'documentMessage': {  
+            const docMsg = await conn.sendMessage(targetChat, {  
+              document: fs.readFileSync(messageToSend.data),  
+              mimetype: messageToSend.mimetype || 'application/octet-stream',  
+              fileName: messageToSend.fileName || 'file'  
+            });  
+            await conn.sendMessage(targetChat, {  
+              text: header  
+            }, {  
+              quoted: docMsg.key ? { key: docMsg.key, message: docMsg.message } : undefined  
+            });  
+       //     console.log('Document message sent successfully');
+            break;  
+          }  
+          case 'stickerMessage': {  
+            const stickerMsg = await conn.sendMessage(targetChat, {  
+              sticker: fs.readFileSync(messageToSend.data)  
+            });  
+            await conn.sendMessage(targetChat, {  
+              text: header  
+            }, {  
+              quoted: stickerMsg.key ? { key: stickerMsg.key, message: stickerMsg.message } : undefined  
+            });  
+     //       console.log('Sticker message sent successfully');
+            break;  
+          }  
+          default:  
+        //    console.log(`Unknown message type: ${messageToSend.type}`);
+        }  
+        
+        // Clean up the stored message after sending (only delete media for original messages)
+        if (messageStore[chatId] && messageStore[chatId][msgId]) {
+          // Only delete media files if this is NOT a duplicate reference
+          if (!original.isDuplicate && original.data && fs.existsSync(original.data)) {
             try {
-              const client = await getMongoClient();
-              if (client) {
-                const db = client.db(DATABASE_NAME);
-                const collection = db.collection(COLLECTION_NAME);
-                
-                const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = updatedSettings;
-                
-                await collection.updateOne(
-                  { ownerNumber: cleanNumber },
-                  { 
-                    $set: {
-                      ...cleanSettings,
-                      _updatedAt: Date.now()
-                    },
-                    $setOnInsert: {
-                      _createdAt: Date.now()
-                    }
-                  },
-                  { upsert: true }
-                );
-                
-                syncQueue.delete(cleanNumber);
-                console.log(`✅ First-time sync to MongoDB for ${cleanNumber}`);
-              }
-            } catch (error) {
-              console.error(`❌ First-time sync failed for ${cleanNumber}:`, error.message);
+              fs.unlinkSync(original.data);
+   //           console.log('Media file deleted:', original.data);
+            } catch (e) {
+              console.log('Error deleting media file:', e);
             }
           }
-        }, 1000);
-      }
-    } else if (wasTemp) {
-      console.log(`⚠️ MongoDB not available for first sync of ${cleanNumber}`);
-    }
-    
-    console.log(`✅ Updated "${key}" for ${cleanNumber}${wasTemp ? ' (first save to MongoDB)' : ''}`);
-    return true;
-    
-  } catch (error) {
-    console.error(`❌ Error updating ${key} for ${cleanNumber}:`, error.message);
-    return false;
-  }
-}
-
-// Update list (comma-separated values)
-async function updateList(ownerNumber, key, values, action = "add") {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber || !key) return false;
-  
-  try {
-    const currentSettings = await loadSettings(cleanNumber);
-    
-    // Convert values to array
-    let valuesArray = [];
-    if (Array.isArray(values)) {
-      valuesArray = values;
-    } else if (typeof values === 'string') {
-      valuesArray = values.split(',').map(v => v.trim()).filter(v => v !== '');
-    } else {
-      return false;
-    }
-    
-    // Get current array
-    const currentValue = currentSettings[key] || "";
-    let currentArray = currentValue.split(',').map(v => v.trim()).filter(v => v !== '');
-    
-    // Update array
-    if (action === "add") {
-      const combinedSet = new Set([...currentArray, ...valuesArray]);
-      currentArray = Array.from(combinedSet);
-    } else if (action === "remove") {
-      currentArray = currentArray.filter(v => !valuesArray.includes(v));
-    } else {
-      return false;
-    }
-    
-    // Update setting
-    const newValue = currentArray.join(',');
-    return await updateEnv(cleanNumber, key, newValue);
-    
-  } catch (error) {
-    console.error(`❌ Error updating list ${key} for ${cleanNumber}:`, error.message);
-    return false;
-  }
-}
-
-// Force sync to MongoDB
-async function forceSyncToMongoDB(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  if (!cleanNumber || !isMongoConnected) return false;
-  
-  try {
-    const settings = await loadSettings(cleanNumber);
-    
-    // Don't sync temp settings
-    if (settings._isTemp) {
-      console.log(`⚠️ Skipping sync for ${cleanNumber} (temp settings)`);
-      return false;
-    }
-    
-    const client = await getMongoClient();
-    const db = client.db(DATABASE_NAME);
-    const collection = db.collection(COLLECTION_NAME);
-    
-    // Remove internal metadata
-    const { _source, _lastLoaded, _lastUpdated, _isTemp, ...cleanSettings } = settings;
-    
-    await collection.updateOne(
-      { ownerNumber: cleanNumber },
-      { 
-        $set: {
-          ...cleanSettings,
-          _updatedAt: Date.now()
-        },
-        $setOnInsert: {
-          _createdAt: Date.now()
+          delete messageStore[chatId][msgId];
+          saveStore();
+          //console.log('Message cleaned from store');
         }
-      },
-      { upsert: true }
-    );
-    
-    // Remove from queue
-    syncQueue.delete(cleanNumber);
-    
-    console.log(`✅ Force synced to MongoDB: ${cleanNumber}`);
-    return true;
-  } catch (error) {
-    console.error(`❌ Force sync failed for ${cleanNumber}:`, error.message);
-    return false;
-  }
+      } catch (e) {  
+        console.log('Resend Error:', e);  
+      }  
+    }  
+  });
+
+ // console.log(`Antidelete feature initialized - Monitoring ALL messages including Status Broadcasts - Max media size: ${MAX_MEDIA_SIZE / (1024 * 1024)}MB - Duplicate detection enabled - Newsletter messages SKIPPED`);
 }
 
-// Get all settings for debugging
-async function getAllSettings(ownerNumber) {
-  const cleanNumber = cleanOwnerNumber(ownerNumber);
-  
-  const result = {
-    cache: settingsCache.get(cleanNumber),
-    json: await loadFromJSON(cleanNumber),
-    mongo: null,
-    existsInMongoDB: false
-  };
-  
-  // Try MongoDB if connected
-  if (isMongoConnected) {
-    try {
-      const client = await getMongoClient();
-      const db = client.db(DATABASE_NAME);
-      const collection = db.collection(COLLECTION_NAME);
-      
-      result.mongo = await collection.findOne({ ownerNumber: cleanNumber });
-      result.existsInMongoDB = !!result.mongo;
-    } catch (error) {
-      // Silent fail
-    }
-  }
-  
-  return result;
-}
+module.exports = { initAntidelete };
 
-// Get sync queue status
-function getSyncQueueStatus() {
-  return {
-    queueSize: syncQueue.size,
-    isMongoConnected,
-    cacheSize: settingsCache.size,
-    mongoConnectionAttempted
-  };
-}
+Here is the code to get whatsapp media key and direct link.👇
 
-// Close connections gracefully
-async function closeConnection() {
-  console.log('🔄 Closing connections...');
-  
-  // Sync any remaining items
-  if (syncQueue.size > 0 && isMongoConnected) {
-    console.log(`Syncing ${syncQueue.size} remaining items...`);
-    await syncBatchToMongoDB();
-  }
-  
-  // Clear timer
-  if (syncTimer) {
-    clearInterval(syncTimer);
-    syncTimer = null;
-  }
-  
-  // Close MongoDB
-  if (mongoClient && isMongoConnected) {
-    try {
-      await mongoClient.close();
-      console.log('✅ MongoDB connection closed');
-    } catch (error) {
-      console.error('❌ Error closing MongoDB:', error.message);
-    }
-    mongoClient = null;
-    isMongoConnected = false;
-  }
-  
-  // Clear cache
-  settingsCache.clear();
-  syncQueue.clear();
-}
-
-// Initialize on module load
-(async () => {
-  await ensureSettingsDir();
-  console.log('✅ Settings manager initialized');
-})();
-
-// Handle process cleanup
-process.on('SIGINT', closeConnection);
-process.on('SIGTERM', closeConnection);
-process.on('beforeExit', closeConnection);
-
-module.exports = {
-  // Core functions
-  readEnv,
-  defEnv,
-  updateEnv,
-  updateList,
-  loadSettings,
-  
-  // Management functions
-  closeConnection,
-  forceSyncToMongoDB,
-  getAllSettings,
-  getSyncQueueStatus,
-  initializeMongoDB,
-  checkMongoDBExists,
-  
-  // Utility functions
-  cleanOwnerNumber,
-  loadFromJSON,
-  saveToJSON,
-  
-  // Status
-  get isMongoConnected() {
-    return isMongoConnected;
-  },
-  
-  get cacheSize() {
-    return settingsCache.size;
-  }
-};
